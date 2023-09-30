@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+    RewriteCond %{HTTP_HOST} ^www\.alcaponebarbershop\.com [NC]
+    RewriteRule ^(.*)$ https://alcaponebarbershop.com/$1 [L,R=301]
+    RewriteCond %{HTTPS} ==on
+    RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
+    RewriteRule ^ %1 [L,NE,R=302]
+    RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
+</IfModule>
+
